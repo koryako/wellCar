@@ -34,3 +34,7 @@ http://www.ctoutiao.com/172487.html gan 代码
 
 
 https://github.com/priya-dwivedi  udacity 学生代码
+
+http://lib.csdn.net/article/aiframework/60538
+
+http://lib.csdn.net/article/89/61236?knId=1818

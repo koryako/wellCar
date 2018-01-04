@@ -4,7 +4,13 @@
 www.cvlibs.net/datasets/kitti/
 
 knowlege of   MASK-RCNN traffic segment reconignzs
+原文：https://news.voyage.auto/under-the-hood-of-a-self-driving-car-78e8bbce62a6
 
+ROS：http://www.ros.org/
+
+FORScan：http://www.forscan.org/Dataspeed
+
+线控套装：http://dataspeedinc.com/ 
 
 http://blog.csdn.net/AdamShan/article/details/78248421?locationNum=7&fps=1
 
@@ -14,8 +20,8 @@ http://blog.csdn.net/AdamShan/article/details/78265754?locationNum=2&fps=1
 https://github.com/udacity/CarND-Extended-Kalman-Filter-Project/tree/master/src
 
 http://blog.csdn.net/lybaihu/article/details/54943545?locationNum=8&fps=1
-
-
+  贝叶斯对抗生成网络论文地址：https://arxiv.org/pdf/1705.09558.pdf
+https://github.com/davidbrai/deep-learning-traffic-lights  交通灯识别
 https://github.com/awjuliani
 https://github.com/awjuliani/TF-Tutorials
 

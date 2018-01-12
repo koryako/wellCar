@@ -57,8 +57,8 @@ def network_model():
 
 
 
-if __name__ == '__main__':
 
+def main():
     batch_size = 256
     epoch = 10
     csv_path = '../../datasets/run/driving_log.csv'
@@ -90,4 +90,10 @@ if __name__ == '__main__':
     # to avoid " 'NoneType' object has no attribute 'TF_DeleteStatus' " error
     gc.collect()
     K.clear_session()
-    
+
+
+if __name__ == '__main__':
+    load_csv_withPandas( r"/Users/mac/Desktop/ml/datasets/run")
+
+    #Self-Driving-Car-master
+    #DDPG-Keras-Torcs

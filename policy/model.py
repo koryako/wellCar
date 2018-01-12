@@ -52,16 +52,66 @@ def network_model():
     model.add(Dense(1))
     model.summary()
     return model
+"""
+#Params
+row, col, ch = 160, 320, 3
+nb_classes = 1
 
+model = Sequential()
+model.add(ZeroPadding2D((1, 1), input_shape=(row, col, ch)))
+# Crop pixels from top and bottom of image
+model.add(Cropping2D(cropping=((60, 20), (0, 0))))
 
+# Resise data within the neural network
+model.add(Lambda(resize_image))
+# Normalize data
+model.add(Lambda(lambda x: (x / 127.5 - 1.)))
 
+# First convolution layer so the model can automatically figure out the best color space for the hypothesis
+model.add(Convolution2D(3, 1, 1, border_mode='same', name='color_conv'))
 
+# CNN model
 
+model.add(Convolution2D(32, 3,3 ,border_mode='same', subsample=(2,2), name='conv1'))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2,2),strides=(1,1), name='pool1'))
 
-#8036 samples from Udacity
+model.add(Convolution2D(64, 3,3 ,border_mode='same',subsample=(2,2), name='conv2'))
+model.add(Activation('relu',name='relu2'))
+model.add(MaxPooling2D(pool_size=(2,2), name='pool2'))
 
-## Oversample left and right turns. Downsample turns close to zero.
-straight =[]
+model.add(Convolution2D(128, 3,3,border_mode='same',subsample=(1,1), name='conv3'))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size= (2,2), name='pool3'))
+
+model.add(Flatten())
+model.add(Dropout(0.5))
+
+model.add(Dense(128, name='dense1'))
+model.add(Activation('relu'))
+model.add(Dropout(0.5))
+
+model.add(Dense(128, name='dense2'))
+
+model.add(Dense(1,name='output'))
+
+model.compile(optimizer=Adam(lr= 0.0001), loss="mse")
+
+# weights_path = '/home/animesh/Documents/CarND/CarND-Behavioral-Cloning-P3/model3.h5'
+# model.load_weights(weights_path)
+#
+# # Make all conv layers non trainable
+# for layer in model.layers[:16]:
+#     layer.trainable = False
+#
+# model.compile(optimizer=Adam(lr= 1e-5), loss="mse")
+
+"""
+"""
+def data_merge():
+    #8036 samples from Udacity
+    # ## Oversample left and right turns. Downsample turns close to zero.
+    straight =[]
 left_turn = []
 right_turn = []
 
@@ -141,98 +191,4 @@ train_samples, validation_samples = train_test_split(final_list, test_size=0.20)
 
 print(len(train_samples), len(validation_samples))
 
-batch_size = 128
-
-
-# compile and train the model using the generator function
-train_generator = train_generator(train_samples, batch_size=batch_size)
-validation_generator = valid_generator(validation_samples, batch_size=batch_size)
-
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Lambda, ELU, Activation
-from keras.layers.convolutional import Convolution2D, Cropping2D, ZeroPadding2D, MaxPooling2D
-from keras.optimizers import SGD, Adam, RMSprop
-
-
-
-#Params
-row, col, ch = 160, 320, 3
-nb_classes = 1
-
-
-
-
-
-
-
-
-
-model = Sequential()
-model.add(ZeroPadding2D((1, 1), input_shape=(row, col, ch)))
-# Crop pixels from top and bottom of image
-model.add(Cropping2D(cropping=((60, 20), (0, 0))))
-
-# Resise data within the neural network
-model.add(Lambda(resize_image))
-# Normalize data
-model.add(Lambda(lambda x: (x / 127.5 - 1.)))
-
-# First convolution layer so the model can automatically figure out the best color space for the hypothesis
-model.add(Convolution2D(3, 1, 1, border_mode='same', name='color_conv'))
-
-# CNN model
-
-model.add(Convolution2D(32, 3,3 ,border_mode='same', subsample=(2,2), name='conv1'))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2,2),strides=(1,1), name='pool1'))
-
-model.add(Convolution2D(64, 3,3 ,border_mode='same',subsample=(2,2), name='conv2'))
-model.add(Activation('relu',name='relu2'))
-model.add(MaxPooling2D(pool_size=(2,2), name='pool2'))
-
-model.add(Convolution2D(128, 3,3,border_mode='same',subsample=(1,1), name='conv3'))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size= (2,2), name='pool3'))
-
-model.add(Flatten())
-model.add(Dropout(0.5))
-
-model.add(Dense(128, name='dense1'))
-model.add(Activation('relu'))
-model.add(Dropout(0.5))
-
-model.add(Dense(128, name='dense2'))
-
-model.add(Dense(1,name='output'))
-
-model.compile(optimizer=Adam(lr= 0.0001), loss="mse")
-
-# weights_path = '/home/animesh/Documents/CarND/CarND-Behavioral-Cloning-P3/model3.h5'
-# model.load_weights(weights_path)
-#
-# # Make all conv layers non trainable
-# for layer in model.layers[:16]:
-#     layer.trainable = False
-#
-# model.compile(optimizer=Adam(lr= 1e-5), loss="mse")
-
-nb_epoch = 8
-samples_per_epoch = 20000
-nb_val_samples = 2000
-
-
-#save every model using Keras checkpoint
-from keras.callbacks import ModelCheckpoint
-filepath="/home/animesh/Documents/CarND/CarND-Behavioral-Cloning-P3/checkpoint2/check-{epoch:02d}-{val_loss:.4f}.hdf5"
-checkpoint = ModelCheckpoint(filepath= filepath, verbose=1, save_best_only=False)
-callbacks_list = [checkpoint]
-
-#Model fit generator
-history_object = model.fit_generator(train_generator, samples_per_epoch= samples_per_epoch,
-                                     validation_data=validation_generator,
-                                     nb_val_samples=nb_val_samples, nb_epoch=nb_epoch, verbose=1, callbacks=callbacks_list)
-
-
-
-print(model.summary())
-
+"""

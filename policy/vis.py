@@ -1,7 +1,7 @@
 
 
 
-def show_loss():
+def show_loss(history_object):
     #Plot losses
     import matplotlib.pyplot as plt
 

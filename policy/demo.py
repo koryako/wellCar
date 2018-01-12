@@ -97,3 +97,40 @@ if __name__ == '__main__':
 
     #Self-Driving-Car-master
     #DDPG-Keras-Torcs
+
+"""
+    batch_size = 128
+
+# compile and train the model using the generator function
+train_generator = train_generator(train_samples, batch_size=batch_size)
+validation_generator = valid_generator(validation_samples, batch_size=batch_size)
+
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten, Lambda, ELU, Activation
+from keras.layers.convolutional import Convolution2D, Cropping2D, ZeroPadding2D, MaxPooling2D
+from keras.optimizers import SGD, Adam, RMSprop
+
+
+
+
+
+nb_epoch = 8
+samples_per_epoch = 20000
+nb_val_samples = 2000
+
+
+#save every model using Keras checkpoint
+from keras.callbacks import ModelCheckpoint
+filepath="/home/animesh/Documents/CarND/CarND-Behavioral-Cloning-P3/checkpoint2/check-{epoch:02d}-{val_loss:.4f}.hdf5"
+checkpoint = ModelCheckpoint(filepath= filepath, verbose=1, save_best_only=False)
+callbacks_list = [checkpoint]
+
+#Model fit generator
+history_object = model.fit_generator(train_generator, samples_per_epoch= samples_per_epoch,
+                                     validation_data=validation_generator,
+                                     nb_val_samples=nb_val_samples, nb_epoch=nb_epoch, verbose=1, callbacks=callbacks_list)
+
+
+
+print(model.summary())
+"""

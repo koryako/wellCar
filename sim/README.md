@@ -22,3 +22,21 @@
 
      https://blogs.unity3d.com/cn/2017/09/19/introducing-unity-machine-learning-agents/
 
+
+
+     6    https://github.com/openai/multiagent-competition
+
+
+       对星际二agent的同学，欢迎大家围观与star：https://github.com/wwxFromTju/sc2-101-zh/tree/master/sc2-code/first_agent
+
+     https://zhuanlan.zhihu.com/p/29222384知乎专栏的阅读效果更好，但是github会持续更新
+
+ https://www.cc.gatech.edu/~riedl/pubs/ijcai17.pdf  Game Engine Learning from Video
+
+
+ 9.  图片转代码
+    论文地址：https://arxiv.org/pdf/1705.07962.pdf
+ 
+    Github项目地址：https://github.com/tonybeltramelli/pix2code
+ 
+    申请试用地址：https://uizard.io/?email_field=mmill06%40gmail.com 

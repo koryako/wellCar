@@ -1,0 +1,1 @@
+DeepMind发布的WaveNet的表现相当不错，而且现在还有百度的DeepVoice3，以及最近谷歌开发的Tacotron2： 

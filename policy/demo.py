@@ -6,7 +6,7 @@ import numpy as np
 
 import os, sys
 
-
+from vis import show_loss
 from keras.models import Sequential, Model
 from keras.layers.core import Dense, Dropout, Activation,Lambda
 from keras.optimizers import Adam
@@ -59,9 +59,10 @@ def network_model():
 
 
 def main():
-    batch_size = 256
+    batch_size = 25
     epoch = 10
-    csv_path = '../../datasets/run/driving_log.csv'
+    #csv_path = '../../datasets/run/driving_log.csv'
+    csv_path = '../../../run1/driving_log.csv'
     center_db,left_db,right_db,steer_db,img_valid,steer_valid=load_csv(csv_path)
     train_generator = generate_train_batch(center_db, left_db, right_db, steer_db, batch_size)
     image_val, steer_val = generate_valid(img_valid, steer_valid)
@@ -73,9 +74,11 @@ def main():
     
     model_json = 'model.json'
     model_weights = 'model.h5'
-
-    history = model.fit_generator(train_generator, samples_per_epoch=20480, nb_epoch=epoch,
+    
+    history = model.fit_generator(train_generator, steps_per_epoch=100, nb_epoch=epoch,
                               validation_data=(image_val, steer_val), verbose=1)
+    #history = model.fit_generator(train_generator, samples_per_epoch=20480, nb_epoch=epoch,
+                              #validation_data=(image_val, steer_val), verbose=1)
     
     json_string = model.to_json()
 
@@ -85,16 +88,16 @@ def main():
     except OSError:
         pass
 
-    
-
+    saveModel(model,model_json,model_weights)
+    show_loss(history)
     # to avoid " 'NoneType' object has no attribute 'TF_DeleteStatus' " error
     gc.collect()
     K.clear_session()
 
 
 if __name__ == '__main__':
-    load_csv_withPandas( r"/Users/mac/Desktop/ml/datasets/run")
-
+    #load_csv_withPandas( r"/Users/mac/Desktop/ml/datasets/run")
+    main()
     #Self-Driving-Car-master
     #DDPG-Keras-Torcs
     #steering-a-car-behavioral-cloning

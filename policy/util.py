@@ -208,7 +208,7 @@ def generate_train_batch(center, left, right, steering, batch_size):
         yield image_set, steering_set
 
 
-def saveModel(model_json,model_weights):
+def saveModel(model,model_json,model_weights):
     #Save model
     #from keras.models import model_from_json
     #model_json = model.to_json()
@@ -247,7 +247,7 @@ def load_csv_withPandas(paths):
     sns.distplot(df['steering'], kde = False)
 
     print(len(df))
-
+"""
 # Start with train generator shared in the class and add image augmentations
 def train_generator_mode2(samples, batch_size=batch_size):
     num_samples = len(samples)
@@ -373,3 +373,4 @@ def resize_image(image):
     import tensorflow as tf
     return tf.image.resize_images(image,[64,64])
 
+"""

@@ -17,7 +17,7 @@ from keras.models import load_model, model_from_json
 from keras.layers.normalization import BatchNormalization
 
 from keras import backend as K
-import json
+
 import gc
 from util import *
 
@@ -59,7 +59,7 @@ def network_model():
 
 
 def main():
-    batch_size = 25
+    batch_size = 250
     epoch = 10
     #csv_path = '../../datasets/run/driving_log.csv'
     csv_path = '../../../run1/driving_log.csv'
@@ -75,12 +75,12 @@ def main():
     model_json = 'model.json'
     model_weights = 'model.h5'
     
-    history = model.fit_generator(train_generator, steps_per_epoch=100, nb_epoch=epoch,
-                              validation_data=(image_val, steer_val), verbose=1)
-    #history = model.fit_generator(train_generator, samples_per_epoch=20480, nb_epoch=epoch,
+    #history = model.fit_generator(train_generator, steps_per_epoch=100, nb_epoch=epoch,
                               #validation_data=(image_val, steer_val), verbose=1)
+    history = model.fit_generator(train_generator, steps_per_epoch=200, nb_epoch=epoch,
+                              validation_data=(image_val, steer_val), verbose=1)
     
-    json_string = model.to_json()
+    
 
     try:
         os.remove(model_json)

@@ -10,6 +10,7 @@ from PIL import Image
 from pandas import DataFrame
 import pandas as pd
 import os, sys
+import json
 
 offset = 0.22
 Rows, Cols = 64, 64
@@ -214,6 +215,7 @@ def saveModel(model,model_json,model_weights):
     #model_json = model.to_json()
     #with open("/home/animesh/Documents/CarND/CarND-Behavioral-Cloning-P3/model_final.json", "w") as json_file:
          #json_file.write(model_json)
+    json_string = model.to_json()
     with open(model_json, 'w') as jfile:
          json.dump(json_string, jfile)
     model.save_weights(model_weights)

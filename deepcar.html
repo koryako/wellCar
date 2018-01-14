@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Deep Learning and Autonomous Driving - handong1587</title>
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="generator" content="Jekyll">
+        <meta name="author" content="handong1587">
+        <meta name="description" content="handong1587's blog">
+        <meta name="keywords" content="">
+        <!-- atom -->
+        <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="https://handong1587.github.io/atom.xml">
+        <link rel="shortcut icon" href="https://handong1587.github.io/images/shortcut.jpg" type="image/x-icon">
+        <!-- font-awesome -->
+        <link href="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/font-awesome.css" rel="stylesheet">
+        <link href="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/css.html" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/syntax.css">
+        <link rel="stylesheet" href="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/main.css">
+        <!-- also for jquery-lunr-search.js to use -->
+        <script type="text/javascript" async="" src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/cse.js"></script><script src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/hm.js"></script><script type="text/javascript" src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/jquery.js"></script>
+
+        
+        
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?9144251ce5a4f4019de4bc601b9b490b";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+        
+    <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/jsapi" type="text/javascript"></script></head>
+
+    <body><div id="MathJax_Message" style="display: none;"></div>
+        <div class="head fn-clear">
+            <div class="header">
+                <h1 class="logo">
+                    <a href="https://handong1587.github.io/"><i class="icon-anchor"></i></a>
+                </h1>
+                <nav class="nav">
+                    <ul>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="https://handong1587.github.io/index.html">
+                                HOME
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="https://handong1587.github.io/categories.html">
+                                CATEGORIES
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="https://handong1587.github.io/archives.html">
+                                ARCHIVES
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="https://handong1587.github.io/links.html">
+                                LINKS
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="https://handong1587.github.io/search.html">
+                                SEARCH
+                            </a>
+                            
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item ">
+                            <a href="https://handong1587.github.io/about.html">
+                                ABOUT ME
+                            </a>
+                            
+                        </li>
+                        
+                    </ul>
+                </nav>
+                <div class="follow">
+                    
+                    <a href="https://handong1587.github.io/atom.xml" target="_blank"><i class="icon-rss"></i></a>
+                    
+                    <a href="http://weibo.com/" target="_blank"><i class="icon-weibo"></i></a>
+                    
+                    <a href="https://www.facebook.com/" target="_blank"><i class="icon-facebook"></i></a>
+                    
+                    <a href="https://github.com/handong1587/" target="_blank"><i class="icon-github-alt"></i></a>
+                    
+                    <a href="https://www.twitter.com/" target="_blank"><i class="icon-twitter"></i></a>
+                    
+                    <a href="https://plus.google.com/116595571760191938657/about" target="_blank"><i class="icon-google-plus"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="contain fn-clear">
+            <div class="container fn-clear">
+                <div class="main">
+                    <div class="article article-post">
+    <h2 class="title">Deep Learning and Autonomous Driving</h2>
+    <div class="info">
+        <span class="info-title"><i class="icon-calendar"></i> Published: </span>
+        <span class="info-date">09 Oct 2015</span>
+        <span class="info-title"><i class="icon-folder-open"></i> Category: </span>
+        <span class="info-link"><a href="https://handong1587.github.io/categories.html#deep_learning-ref">deep_learning</a></span>
+    </div>
+    <div id="toc" style="display: none;"><i>Jump to...</i> <ol class=""><li class=""><a href="#courses">Courses</a></li><li class=""><a href="#papers">Papers</a><ol class=""><li class=""><a href="#deepdriving">DeepDriving</a></li><li class=""><a href="#brain4cars-cabin-sensing-for-safe-and-personalized-driving">BRAIN4CARS: Cabin Sensing for Safe and Personalized Driving</a></li></ol></li><li class=""><a href="#projects">Projects</a></li><li class=""><a href="#blogs">Blogs</a></li></ol></div>
+    <h1 id="courses" class="clickable-header top-level-header">Courses</h1><i class="icon-arrow-up back-to-top"> </i>
+
+<p><strong>(Toronto) CSC2541: Visual Perception for Autonomous Driving, Winter 2016</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/driving.jpg" alt=""></p>
+
+<ul>
+  <li>homepage: <a href="http://www.cs.toronto.edu/%7Eurtasun/courses/CSC2541/CSC2541_Winter16.html">http://www.cs.toronto.edu/~urtasun/courses/CSC2541/CSC2541_Winter16.html</a></li>
+</ul>
+
+<p><strong>(MIT) 6.S094: Deep Learning for Self-Driving Cars</strong></p>
+
+<ul>
+  <li>homepage: <a href="http://selfdrivingcars.mit.edu/">http://selfdrivingcars.mit.edu/</a></li>
+  <li>github: <a href="https://github.com/lexfridman/deepcars">https://github.com/lexfridman/deepcars</a></li>
+  <li>youtube: <a href="https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf">https://www.youtube.com/playlist?list=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf</a></li>
+  <li>mirror: <a href="https://pan.baidu.com/s/1boLRFaB">https://pan.baidu.com/s/1boLRFaB</a></li>
+</ul>
+
+<p><strong>How to Land An Autonomous Vehicle Job: Coursework</strong></p>
+
+<ul>
+  <li>blog: <a href="https://medium.com/self-driving-cars/how-to-land-an-autonomous-vehicle-job-coursework-e7acc2bfe740#.7vfjx3i1j">https://medium.com/self-driving-cars/how-to-land-an-autonomous-vehicle-job-coursework-e7acc2bfe740#.7vfjx3i1j</a></li>
+</ul>
+
+<h1 id="papers" class="clickable-header top-level-header">Papers</h1><i class="icon-arrow-up back-to-top"> </i>
+
+<p><strong>An Empirical Evaluation of Deep Learning on Highway Driving</strong></p>
+
+<ul>
+  <li>arxiv: <a href="http://arxiv.org/abs/1504.01716">http://arxiv.org/abs/1504.01716</a></li>
+  <li>github: <a href="https://github.com/brodyh/caffe">https://github.com/brodyh/caffe</a></li>
+</ul>
+
+<h2 id="deepdriving" class="clickable-header">DeepDriving</h2>
+
+<p><strong>DeepDriving: Learning Affordance for Direct Perception in Autonomous Driving</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/teaser.jpg" alt=""></p>
+
+<ul>
+  <li>project page: <a href="http://deepdriving.cs.princeton.edu/">http://deepdriving.cs.princeton.edu/</a></li>
+  <li>paper: <a href="http://deepdriving.cs.princeton.edu/paper.pdf">http://deepdriving.cs.princeton.edu/paper.pdf</a></li>
+  <li>code: <a href="http://deepdriving.cs.princeton.edu/DeepDriving.zip">http://deepdriving.cs.princeton.edu/DeepDriving.zip</a></li>
+</ul>
+
+<p><strong>End to End Learning for Self-Driving Cars</strong></p>
+
+<ul>
+  <li>intro: NVIDIA DevBox and Torch 7, 30 FPS</li>
+  <li>arxiv: <a href="http://arxiv.org/abs/1604.07316">http://arxiv.org/abs/1604.07316</a></li>
+  <li>blog: <a href="https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/">https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/</a></li>
+  <li>demo: <a href="https://www.youtube.com/watch?v=NJU9ULQUwng&amp;feature=youtu.be">https://www.youtube.com/watch?v=NJU9ULQUwng&amp;feature=youtu.be</a></li>
+  <li>github: <a href="https://github.com/SullyChen/Nvidia-Autopilot-TensorFlow">https://github.com/SullyChen/Nvidia-Autopilot-TensorFlow</a></li>
+</ul>
+
+<p><strong>End-to-End Deep Learning for Self-Driving Cars</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/training-624x291.png" alt=""></p>
+
+<ul>
+  <li>blog: <a href="https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/">https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/</a></li>
+</ul>
+
+<hr>
+
+<p><strong>Can we unify monocular detectors for autonomous driving by using the pixel-wise semantic segmentation of CNNs?</strong></p>
+
+<ul>
+  <li>arxiv: <a href="http://arxiv.org/abs/1607.00971">http://arxiv.org/abs/1607.00971</a></li>
+</ul>
+
+<h2 id="brain4cars-cabin-sensing-for-safe-and-personalized-driving" class="clickable-header">BRAIN4CARS: Cabin Sensing for Safe and Personalized Driving</h2>
+
+<p><strong>Brain4Cars: Sensory-Fusion Recurrent Neural Models for Driver Activity Anticipation</strong></p>
+
+<p><strong>Brain4Cars: Car That Knows Before You Do via Sensory-Fusion Deep Learning Architecture</strong></p>
+
+<ul>
+  <li>arxiv: <a href="http://arxiv.org/abs/1601.00740">http://arxiv.org/abs/1601.00740</a></li>
+</ul>
+
+<p><strong>Car that Knows Before You Do: Anticipating Maneuvers via Learning Temporal Driving Models</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/demo.jpg" alt=""></p>
+
+<ul>
+  <li>arxiv: <a href="http://arxiv.org/abs/1504.02789">http://arxiv.org/abs/1504.02789</a></li>
+  <li>github: <a href="https://github.com/asheshjain399/ICCV2015_Brain4Cars">https://github.com/asheshjain399/ICCV2015_Brain4Cars</a></li>
+</ul>
+
+<p><strong>Recurrent Neural Networks for Driver Activity Anticipation via Sensory-Fusion Architecture</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/fusionRNN.png" alt=""></p>
+
+<ul>
+  <li>project page: <a href="http://www.brain4cars.com/">http://www.brain4cars.com/</a></li>
+  <li>arxiv: <a href="http://arxiv.org/abs/1509.05016">http://arxiv.org/abs/1509.05016</a></li>
+  <li>github: <a href="https://github.com/asheshjain399/RNNexp">https://github.com/asheshjain399/RNNexp</a></li>
+</ul>
+
+<p><strong>Long-term Planning by Short-term Prediction</strong></p>
+
+<ul>
+  <li>arxiv: <a href="http://arxiv.org/abs/1602.01580">http://arxiv.org/abs/1602.01580</a></li>
+</ul>
+
+<p><strong>Learning a Driving Simulator</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/selfsteer.gif" alt=""></p>
+
+<ul>
+  <li>introo: by hacker Geohot</li>
+  <li>project page: <a href="http://research.comma.ai/">http://research.comma.ai/</a></li>
+  <li>arxiv: <a href="http://arxiv.org/abs/1608.01230">http://arxiv.org/abs/1608.01230</a></li>
+  <li>paper: <a href="https://github.com/commaai/research/blob/master/paper/commalds.pdf">https://github.com/commaai/research/blob/master/paper/commalds.pdf</a></li>
+  <li>github: <a href="https://github.com/commaai/research">https://github.com/commaai/research</a></li>
+</ul>
+
+<p><strong>Comma.ai open-sources the data it used for its first successful driverless trips</strong></p>
+
+<ul>
+  <li>blog: <a href="https://techcrunch.com/2016/08/03/comma-ai-open-sources-the-data-it-used-for-its-first-successful-driverless-trips/">https://techcrunch.com/2016/08/03/comma-ai-open-sources-the-data-it-used-for-its-first-successful-driverless-trips/</a></li>
+</ul>
+
+<p><strong>Autonomous driving challenge: To Infer the property of a 
+dynamic object based on its motion pattern using recurrent neural 
+network</strong></p>
+
+<ul>
+  <li>arxiv: <a href="http://arxiv.org/abs/1609.00361">http://arxiv.org/abs/1609.00361</a></li>
+</ul>
+
+<p><strong>Safe, Multi-Agent, Reinforcement Learning for Autonomous Driving</strong></p>
+
+<ul>
+  <li>arxiv: <a href="https://arxiv.org/abs/1610.03295">https://arxiv.org/abs/1610.03295</a></li>
+</ul>
+
+<p><strong>Learning from Maps: Visual Common Sense for Autonomous Driving</strong></p>
+
+<ul>
+  <li>arxiv: <a href="https://arxiv.org/abs/1611.08583">https://arxiv.org/abs/1611.08583</a></li>
+</ul>
+
+<p><strong>SAD-GAN: Synthetic Autonomous Driving using Generative Adversarial Networks</strong></p>
+
+<ul>
+  <li>intro: Accepted at the Deep Learning for Action and Interaction 
+Workshop, 30th Conference on Neural Information Processing Systems (NIPS
+ 2016)</li>
+  <li>arxiv: <a href="https://arxiv.org/abs/1611.08788">https://arxiv.org/abs/1611.08788</a></li>
+</ul>
+
+<p><strong>MultiNet: Real-time Joint Semantic Reasoning for Autonomous Driving</strong></p>
+
+<ul>
+  <li>intro: first place on Kitti Road Segmentation. 
+joint classification, detection and semantic segmentation via a unified architecture, less than 100 ms to perform all tasks</li>
+  <li>arxiv: <a href="https://arxiv.org/abs/1612.07695">https://arxiv.org/abs/1612.07695</a></li>
+  <li>github: <a href="https://github.com/MarvinTeichmann/MultiNet">https://github.com/MarvinTeichmann/MultiNet</a></li>
+</ul>
+
+<p><strong>Interpretable Learning for Self-Driving Cars by Visualizing Causal Attention</strong></p>
+
+<ul>
+  <li>intro: UC Berkeley</li>
+  <li>arxiv: <a href="https://arxiv.org/abs/1703.10631">https://arxiv.org/abs/1703.10631</a></li>
+</ul>
+
+<h1 id="projects" class="clickable-header top-level-header">Projects</h1><i class="icon-arrow-up back-to-top"> </i>
+
+<p><strong>Caffe-Autopilot: Car autopilot software that uses C++, BVLC Caffe, OpenCV, and SFML</strong></p>
+
+<ul>
+  <li>github: <a href="https://github.com/SullyChen/Caffe-Autopilot">https://github.com/SullyChen/Caffe-Autopilot</a></li>
+</ul>
+
+<p><strong>Self Driving Car Demo</strong></p>
+
+<ul>
+  <li>intro; A project that trains a virtual car to how to move an object around a screen (drive itself) 
+without running into obstacles using a type of reinforcement learning called Q-Learning</li>
+  <li>github: <a href="https://github.com/llSourcell/Self-Driving-Car-Demo/">https://github.com/llSourcell/Self-Driving-Car-Demo/</a></li>
+</ul>
+
+<p><strong>Autoware: Open-source software for urban autonomous driving</strong></p>
+
+<ul>
+  <li>github: <a href="https://github.com/CPFL/Autoware">https://github.com/CPFL/Autoware</a></li>
+</ul>
+
+<p><strong>Open Sourcing 223GB of Driving Data</strong></p>
+
+<ul>
+  <li>homepage: <a href="https://udacity.com/self-driving-car">https://udacity.com/self-driving-car</a></li>
+  <li>blog: <a href="https://medium.com/udacity/open-sourcing-223gb-of-mountain-view-driving-data-f6b5593fbfa5#.q8nk5bfpp">https://medium.com/udacity/open-sourcing-223gb-of-mountain-view-driving-data-f6b5593fbfa5#.q8nk5bfpp</a></li>
+  <li>github: <a href="https://github.com/udacity/self-driving-car">https://github.com/udacity/self-driving-car</a></li>
+</ul>
+
+<p><strong>Machine Learning for RC Cars</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/68747470733a2f2f7468756d62732e6766796361742e636f6d2f4461726c.gif" alt=""></p>
+
+<ul>
+  <li>github: <a href="https://github.com/kendricktan/suiron">https://github.com/kendricktan/suiron</a></li>
+</ul>
+
+<p><strong>Self Driving (Toy) Ferrari</strong></p>
+
+<ul>
+  <li>github: <a href="https://github.com/RyanZotti/Self-Driving-Car">https://github.com/RyanZotti/Self-Driving-Car</a></li>
+</ul>
+
+<p><strong>Lane Finding Project for Self-Driving Car ND</strong></p>
+
+<ul>
+  <li>github: <a href="https://github.com/udacity/CarND-LaneLines-P1">https://github.com/udacity/CarND-LaneLines-P1</a></li>
+</ul>
+
+<p><strong>Instructions on how to get your development environment ready for Udacity Self Driving Car (SDC) Challenges</strong></p>
+
+<ul>
+  <li>github: <a href="https://github.com/gtarobotics/self-driving-car">https://github.com/gtarobotics/self-driving-car</a></li>
+</ul>
+
+<p><strong>DeepDrive: self-driving car AI</strong></p>
+
+<ul>
+  <li>intro: Caffe Model / Dataset / Tips and Tricks</li>
+  <li>homepage: <a href="http://deepdrive.io/">http://deepdrive.io/</a></li>
+</ul>
+
+<p><strong>DeepDrive setup: Run a self-driving car simulator from the comfort of your own PC</strong></p>
+
+<ul>
+  <li>github: <a href="https://github.com/crizCraig/deepdrive">https://github.com/crizCraig/deepdrive</a></li>
+</ul>
+
+<p><strong>DeepTesla: End-to-End Learning from Human and Autopilot Driving</strong></p>
+
+<p><a href="http://selfdrivingcars.mit.edu/deeptesla/">http://selfdrivingcars.mit.edu/deeptesla/</a></p>
+
+<h1 id="blogs" class="clickable-header top-level-header">Blogs</h1><i class="icon-arrow-up back-to-top"> </i>
+
+<p><strong>Self-driving cars: How far away are we REALLY from autonomous cars?(7 Aug 2015)</strong></p>
+
+<p><a href="http://www.alphr.com/cars/1001329/self-driving-cars-how-far-away-are-we-really-from-autonomous-cars">http://www.alphr.com/cars/1001329/self-driving-cars-how-far-away-are-we-really-from-autonomous-cars</a></p>
+
+<p><strong>Practice makes perfect: Driverless cars will learn from their mistakes(9 Oct 2015)</strong></p>
+
+<p><a href="http://www.alphr.com/cars/1001713/practice-makes-perfect-driverless-cars-will-learn-from-their-mistakes">http://www.alphr.com/cars/1001713/practice-makes-perfect-driverless-cars-will-learn-from-their-mistakes</a></p>
+
+<p><strong>Eyes on the Road: How Autonomous Cars Understand What They’re Seeing</strong></p>
+
+<ul>
+  <li>blog: <a href="http://blogs.nvidia.com/blog/2016/01/05/eyes-on-the-road-how-autonomous-cars-understand-what-theyre-seeing/">http://blogs.nvidia.com/blog/2016/01/05/eyes-on-the-road-how-autonomous-cars-understand-what-theyre-seeing/</a></li>
+</ul>
+
+<p><strong>Human-in-the-loop deep learning will help drive autonomous cars</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/Ubercar.jpg" alt=""></p>
+
+<p><a href="http://venturebeat.com/2016/06/25/human-in-the-loop-deep-learning-will-help-drive-autonomous-cars/">http://venturebeat.com/2016/06/25/human-in-the-loop-deep-learning-will-help-drive-autonomous-cars/</a></p>
+
+<p><strong>Using reinforcement learning in Python to teach a virtual car to avoid obstacles</strong></p>
+
+<ul>
+  <li>part 1: <a href="https://medium.com/@harvitronix/using-reinforcement-learning-in-python-to-teach-a-virtual-car-to-avoid-obstacles-6e782cc7d4c6#.rneyuerga">https://medium.com/@harvitronix/using-reinforcement-learning-in-python-to-teach-a-virtual-car-to-avoid-obstacles-6e782cc7d4c6#.rneyuerga</a></li>
+  <li>part 2: <a href="https://medium.com/@harvitronix/reinforcement-learning-in-python-to-teach-a-virtual-car-to-avoid-obstacles-part-2-93e614fcd238#.1pt1lli4c">https://medium.com/@harvitronix/reinforcement-learning-in-python-to-teach-a-virtual-car-to-avoid-obstacles-part-2-93e614fcd238#.1pt1lli4c</a></li>
+  <li>part 3: <a href="https://medium.com/@harvitronix/reinforcement-learning-in-python-to-teach-an-rc-car-to-avoid-obstacles-part-3-a1d063ac962f#.jwzm2v1r4">https://medium.com/@harvitronix/reinforcement-learning-in-python-to-teach-an-rc-car-to-avoid-obstacles-part-3-a1d063ac962f#.jwzm2v1r4</a></li>
+  <li>github: <a href="https://github.com/harvitronix/reinforcement-learning-car">https://github.com/harvitronix/reinforcement-learning-car</a></li>
+</ul>
+
+<p><strong>Autonomous RC car using Raspberry Pi and Neural Networks</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f64437.jpeg" alt=""></p>
+
+<ul>
+  <li>blog: <a href="http://www.multunus.com/blog/2016/07/autonomous-rc-car-using-raspberry-pi-and-neural-networks/">http://www.multunus.com/blog/2016/07/autonomous-rc-car-using-raspberry-pi-and-neural-networks/</a></li>
+  <li>github: <a href="https://github.com/multunus/autonomous-rc-car">https://github.com/multunus/autonomous-rc-car</a></li>
+</ul>
+
+<p><strong>The Road Ahead: Autonomous Vehicles Startup Ecosystem</strong></p>
+
+<p><img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/158utPvF5Lfyw9PpRjfaGpA.jpeg" alt=""></p>
+
+<p><a href="https://medium.com/the-mission/the-road-ahead-autonomous-vehicles-startup-ecosystem-3c91d546673d#.gft1xyh9l">https://medium.com/the-mission/the-road-ahead-autonomous-vehicles-startup-ecosystem-3c91d546673d#.gft1xyh9l</a></p>
+
+<p><strong>Deep Driving - A revolutionary AI technique is about to transform the self-driving car</strong></p>
+
+<p><a href="https://www.technologyreview.com/s/602600/deep-driving/">https://www.technologyreview.com/s/602600/deep-driving/</a></p>
+
+<p>**Visualizations for regressing wheel steering angles in self driving cars with Keras **</p>
+
+<ul>
+  <li>blog: <a href="http://jacobcv.blogspot.jp/2016/10/visualizations-for-regressing-wheel.html">http://jacobcv.blogspot.jp/2016/10/visualizations-for-regressing-wheel.html</a></li>
+  <li>github: <a href="https://github.com/jacobgil/keras-steering-angle-visualizations">https://github.com/jacobgil/keras-steering-angle-visualizations</a></li>
+</ul>
+
+    <div class="bdsharebuttonbox">
+        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+        <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+        <a href="#" class="bds_mail" data-cmd="mail" title="分享到邮件分享"></a>
+        <a href="#" class="bds_more" data-cmd="more"></a>
+    </div>
+    <nav class="article-previous fn-clear">
+        
+        <a class="prev" href="https://handong1587.github.io/deep_learning/2015/10/09/dl-and-3d.html" rel="bookmark">«&nbsp;Deep Learning And 3D</a>
+        
+        
+        <a class="next" href="https://handong1587.github.io/deep_learning/2015/10/09/dl-applications.html" rel="bookmark">Deep Learning Applications&nbsp;»</a>
+        
+    </nav>
+    <div class="comment">
+        
+        <div id="disqus_thread"></div>
+        
+    </div>
+</div>
+
+                </div>
+
+                <div class="aside">
+                    <div class="aside-contact">
+                        <h4 class="title">About me</h4>
+                        <div class="det fn-clear">
+                            <div class="det-image">
+                                <img src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/header2.jpg">
+                            </div>
+                            <div class="det-text">
+                                <p>Hi world~</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Recent Posts</h4>
+                        <ul class="list">
+                            
+                                <li><a href="https://handong1587.github.io/programming_study/2016/12/24/pyinstaller-and-others.html" title="PyInstsaller and Others" rel="bookmark">PyInstsaller and Others</a></li>
+                            
+                                <li><a href="https://handong1587.github.io/deep_learning/2016/12/06/keep-up-with-new-trends.html" title="Keep Up With New Trends" rel="bookmark">Keep Up With New Trends</a></li>
+                            
+                                <li><a href="https://handong1587.github.io/programming_study/2016/09/07/cpp-programming-solutions.html" title="C++ Programming Solutions" rel="bookmark">C++ Programming Solutions</a></li>
+                            
+                                <li><a href="https://handong1587.github.io/web_dev/2016/07/31/add-lunr-search-plugin-for-blog.html" title="Add Lunr Search Plugin For Blog" rel="bookmark">Add Lunr Search Plugin For Blog</a></li>
+                            
+                                <li><a href="https://handong1587.github.io/linux_study/2016/07/28/vsftpd-cmd.html" title="vsftpd Commands" rel="bookmark">vsftpd Commands</a></li>
+                            
+                                <li><a href="https://handong1587.github.io/linux_study/2016/07/27/setup-vsftpd.html" title="Setup vsftpd on Ubuntu 14.10" rel="bookmark">Setup vsftpd on Ubuntu 14.10</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="aside-item">
+                        <h4 class="title">Links</h4>
+                        <ul class="list">
+                            
+                                
+                                    
+                                    <li><a href="http://ensharing.com/" title="EnSharing" target="_blank">EnSharing</a></li>
+                                    
+                                    <li><a href="http://joshua881228.webfactional.com/" title="JOSHUA's BLOG" target="_blank">JOSHUA's BLOG</a></li>
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="foot">
+            <div class="footer">
+                <p>A blog template forked from <a href="https://github.com/zJiaJun/zJiaJun.github.io" target="_blank">zJiaJun</a>. Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a>.</p>
+            </div>
+        </div>
+
+        
+
+        
+
+        <!-- mathjax -->
+        <script type="text/javascript" src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/MathJax.js"></script>
+
+        <!-- Search in CSE home -->
+        <script>
+        (function() {
+            var cx = '003287793477459687163:n59nxpgejxy';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+        </script>
+        <gcse:search></gcse:search>
+
+        <!-- jekyll-table-of-contents -->
+        <script src="Deep%20Learning%20and%20Autonomous%20Driving%20-%20handong1587_files/toc.js" type="text/javascript"></script>
+
+        <!-- Script to display table of content -->
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('#toc').toc({ showEffect: 'slideDown' });
+        }); </script>
+
+    
+
+</body></html>

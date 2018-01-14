@@ -2,10 +2,7 @@
 
 import numpy as np
 #import tensorflow as tf
-
-
 import os, sys
-
 from vis import show_loss
 from keras.models import Sequential, Model
 from keras.layers.core import Dense, Dropout, Activation,Lambda
@@ -15,12 +12,9 @@ from keras.layers import Convolution2D, MaxPooling2D, Flatten, Input, ELU
 #from keras import initializations
 from keras.models import load_model, model_from_json
 from keras.layers.normalization import BatchNormalization
-
 from keras import backend as K
-
 import gc
 from util import *
-
 
 def network_model():
     """
@@ -30,7 +24,6 @@ def network_model():
     pooling : maxpooling
     used dropout
     """
-
     model = Sequential()
     model.add(Lambda(lambda x: x / 127.5 - 1.0, input_shape=(Rows, Cols, 3)))
     model.add(Convolution2D(32, 3, 3, border_mode='same', subsample=(2, 2), activation='relu', name='Conv1'))
@@ -55,9 +48,6 @@ def network_model():
     model.summary()
     return model
 
-
-
-
 def main():
     batch_size = 250
     epoch = 10
@@ -66,22 +56,16 @@ def main():
     center_db,left_db,right_db,steer_db,img_valid,steer_valid=load_csv(csv_path)
     train_generator = generate_train_batch(center_db, left_db, right_db, steer_db, batch_size)
     image_val, steer_val = generate_valid(img_valid, steer_valid)
-    
     model = network_model()
-    
     adam = Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
     model.compile(optimizer=adam, loss='mse')
-    
     model_json = 'model.json'
     model_weights = 'model.h5'
-    
     #history = model.fit_generator(train_generator, steps_per_epoch=100, nb_epoch=epoch,
                               #validation_data=(image_val, steer_val), verbose=1)
     history = model.fit_generator(train_generator, steps_per_epoch=200, nb_epoch=epoch,
                               validation_data=(image_val, steer_val), verbose=1)
     
-    
-
     try:
         os.remove(model_json)
         os.remove(model_weights)

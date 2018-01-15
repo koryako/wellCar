@@ -2,6 +2,7 @@
 
 import numpy as np
 #import tensorflow as tf
+#tf.python.control_flow_ops = tf
 import os, sys
 from vis import show_loss
 from keras.models import Sequential, Model
@@ -15,7 +16,7 @@ from keras.layers.normalization import BatchNormalization
 from keras import backend as K
 import gc
 from util import *
-
+from keras.preprocessing.image import ImageDataGenerator# keras 数据批量生成
 def network_model():
     """
     designed with 4 convolutional layer & 3 fully connected layer
@@ -61,6 +62,15 @@ def main():
     model.compile(optimizer=adam, loss='mse')
     model_json = 'model.json'
     model_weights = 'model.h5'
+    #x_train, x_validation, y_train, y_validation = data_prep.prep_data()
+
+    #datagen = ImageDataGenerator()
+    #model = model_creation.get_model()
+    #model.compile('adam', 'mean_squared_error', ['accuracy'])
+    #history = model.fit_generator(datagen.flow(x_train, y_train, batch_size=32), samples_per_epoch=len(x_train),
+                              #nb_epoch=5, validation_data=datagen.flow(x_validation, y_validation, batch_size=32),
+                              #nb_val_samples=len(x_validation))
+    #print(history)
     #history = model.fit_generator(train_generator, steps_per_epoch=100, nb_epoch=epoch,
                               #validation_data=(image_val, steer_val), verbose=1)
     history = model.fit_generator(train_generator, steps_per_epoch=200, nb_epoch=epoch,

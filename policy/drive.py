@@ -176,8 +176,16 @@ if __name__ == '__main__':
         print('You are using Keras version ', keras_version,
               ', but the model was built using ', model_version)
     
+
     json_string='model.json'
-    with open(json_string, 'r') as jfile:#使用json保存模型结构
+    with open(json_string, 'r') as jfile:
+          # NOTE: if you saved the file by calling json.dump(model.to_json(), ...)
+        # then you will have to call:
+        #
+        #   model = model_from_json(json.loads(jfile.read()))\
+        #
+        # instead.
+#        model = model_from_json(jfile.read())
         model = model_from_json(json.load(jfile))
     print('load json')
     #model.compile("adam", "mse")

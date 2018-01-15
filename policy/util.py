@@ -219,6 +219,7 @@ def saveModel(model,model_json,model_weights):
     with open(model_json, 'w') as jfile:
          json.dump(json_string, jfile)
     model.save_weights(model_weights)
+    #model.save_weights(model_weights, True)
     #model.save("/home/animesh/Documents/CarND/CarND-Behavioral-Cloning-P3/model_final.h5")
     print("Saved model to disk")
 
